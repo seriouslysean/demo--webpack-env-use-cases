@@ -18,8 +18,17 @@ const serverConfig = merge(getSharedConfig(true), {
     target: 'node18.13',
     externals: [nodeExternals()],
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env.APP_ENV': '"server"',
+        // The DefinePlugin replaces variables in your code with other values or expressions at compile time.
+        // see https://webpack.js.org/plugins/define-plugin/
+        // new webpack.DefinePlugin({
+        //     'process.env.APP_ENV': '"server"',
+        // }),
+
+        // Need to add all envs here to make them available to the client
+        // The EnvironmentPlugin is shorthand for using the DefinePlugin on process.env keys
+        // see https://webpack.js.org/plugins/environment-plugin/
+        new webpack.EnvironmentPlugin({
+            APP_ENV: 'server',
         }),
     ],
 });

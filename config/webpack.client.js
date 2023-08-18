@@ -14,8 +14,17 @@ const serverConfig = merge(getSharedConfig(false), {
     node: false,
     target: 'browserslist',
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env.APP_ENV': '"client"',
+        // The DefinePlugin replaces variables in your code with other values or expressions at compile time.
+        // see https://webpack.js.org/plugins/define-plugin/
+        // new webpack.DefinePlugin({
+        //     'process.env.APP_ENV': '"client"',
+        // }),
+
+        // Need to add all envs here to make them available to the client
+        // The EnvironmentPlugin is shorthand for using the DefinePlugin on process.env keys
+        // see https://webpack.js.org/plugins/environment-plugin/
+        new webpack.EnvironmentPlugin({
+            APP_ENV: 'client',
         }),
     ],
 });
