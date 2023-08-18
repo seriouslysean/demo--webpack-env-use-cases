@@ -1,0 +1,24 @@
+{
+  "name": "demo--webpack-env-use-cases",
+  "description": "Demo of env use types and use cases in Webpack",
+  "version": "1.0.0",
+  "author": "Sean Kennedy <sean@codeserious.com>",
+  "bugs": {
+    "url": "https://github.com/seriouslysean/demo--webpack-env-use-cases/issues"
+  },
+  "homepage": "https://github.com/seriouslysean/demo--webpack-env-use-cases#readme",
+  "keywords": [
+    "Env",
+    "Javascript",
+    "Webpack"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seriouslysean/demo--webpack-env-use-cases.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
