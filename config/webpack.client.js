@@ -15,7 +15,7 @@ const serverConfig = merge(getSharedConfig(false), {
     target: 'browserslist',
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.JS_ENV': 'client',
+            'process.env.APP_ENV': '"client"',
         }),
     ],
 });

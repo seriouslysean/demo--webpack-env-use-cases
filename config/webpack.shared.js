@@ -1,5 +1,9 @@
+const dotenv = require('dotenv');
 const webpack = require('webpack');
+const { readFileSync } = require('fs');
 const { join, resolve } = require('path');
+
+const { version: appVersion } = require('../package.json');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 
@@ -12,7 +16,10 @@ const paths = {
     dist: join(root, 'dist'),
     public: '/',
     server: join(root, 'server'),
+    utils: join(root, 'utils'),
 };
+
+const appEnv = dotenv.parse(readFileSync(join(paths.config, '.env.build'), 'utf8'));
 
 function getSharedConfig(isServer) {
     return {
@@ -28,6 +35,7 @@ function getSharedConfig(isServer) {
         resolve: {
             alias: {
                 '~config': paths.config,
+                '~utils': paths.utils,
             },
             extensions: ['.js'],
         },
@@ -53,7 +61,8 @@ function getSharedConfig(isServer) {
 
             // Need to add all envs here to make them available to the client
             new webpack.EnvironmentPlugin({
-                foo: 'bar',
+                APP_VERSION: appVersion,
+                ...appEnv,
             }),
         ],
 

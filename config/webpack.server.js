@@ -19,7 +19,7 @@ const serverConfig = merge(getSharedConfig(true), {
     externals: [nodeExternals()],
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.JS_ENV': 'server',
+            'process.env.APP_ENV': '"server"',
         }),
     ],
 });
